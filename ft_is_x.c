@@ -4,7 +4,7 @@
  * consists of alphabetical characters. */
 int	ft_isalpha(int c)
 {
-	return ((c >= "A" && c <= "Z") || (c >= "a" && c <= "z"));
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
 /* digits */
@@ -16,8 +16,8 @@ int	ft_isdigit(int c)
 /* alphabetical chars and digits */
 int	ft_isalnum(int c)
 {
-	return ((c >= "A" && c <= "Z")
-		|| (c >= "a" && c <= "z")
+	return ((c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z')
 		|| (c >= '0' && c <= '9'));
 }
 
