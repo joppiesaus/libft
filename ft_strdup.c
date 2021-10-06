@@ -1,8 +1,8 @@
-#include <libft.h>
+#include "libft.h"
 
 #include <stdlib.h>
 
-char	*strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*s2;
 	size_t	len;
