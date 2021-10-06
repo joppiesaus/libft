@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
-size_t  strlcat(char *dst, const char *src, size_t dstsize);
-size_t  strlcpy(char *dst, const char *src, size_t dstsize);
+size_t  ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t  ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif

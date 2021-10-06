@@ -1,6 +1,6 @@
 #include "libft.h"
 
-size_t	strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	n;
 
@@ -17,14 +17,16 @@ size_t	strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-size_t	strlcat(char *dst, const char *src, size_t dstsize)
+/* TODO: uses long, might overflow because of the size_t,
+ * though who uses such large strings? */
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	len;
-	size_t	n;
+	long	len;
+	long	n;
 
-	len = ft_strlen(dst);
+	len = (long)ft_strlen(dst);
 	n = 0;
-	while (n < dstsize - len - 1 && src[n] != 0)
+	while (n < (long)dstsize - len - 1 && src[n] != 0)
 	{
 		dst[n + len] = src[n];
 		n++;
