@@ -24,12 +24,12 @@ int	ft_isalnum(int c)
 /* ascii */
 int	ft_isascii(int c)
 {
-	return (c >= 0 && c <= 0x127);
+	return (c >= 0 && c <= 127);
 }
 
 /* checks if c is a printable ASCII character.
  * starts from space, ends in delete. */
 int	ft_isprint(int c)
 {
-	return (c >= 0x20 && c <= 0x7f);
+	return (c >= 0x20 && c <= '~');
 }
