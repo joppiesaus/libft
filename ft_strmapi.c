@@ -1,6 +1,6 @@
 #include "libft.h"
 
-#include <sdtlib.h>
+#include <stdlib.h>
 
 /* TODO: double pass? */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
