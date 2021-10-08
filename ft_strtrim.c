@@ -48,6 +48,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	i;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	m_strtrim_precount(s1, set, &start, &end);
 	ret = malloc((end - start + 1) + 1);
 	if (ret == NULL)
