@@ -1,9 +1,9 @@
-NAME := ftlib.a
+NAME := libft
 OBJ_DIR = obj
 CFLAGS := -Wall -Wextra -O
 DEPS := $(wildcard ft_*.c)
 OBJ := $(DEPS:%.c=$(OBJ_DIR)/%.o)
-HEADERS := libft.h
+HEADERS := $(NAME).h
 
 # rule:
 # target: prerequisites
@@ -15,9 +15,10 @@ HEADERS := libft.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	echo $(OBJ)
-	ar -r $^
+$(NAME): $(NAME).a
+
+$(NAME).a: $(OBJ)
+	ar -ru $(NAME).a $^
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
 	@mkdir -p $(dir $@)
@@ -26,9 +27,10 @@ $(OBJ_DIR)/%.o: %.c $(HEADERS)
 clean:
 	rm -f $(OBJ_DIR)/*.o
 
-fclean:
-	rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME).a
 
-re: clean fclean all
+re: fclean all
+force: re
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re force
