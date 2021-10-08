@@ -15,20 +15,28 @@ static int	m_str_contains(const char *s, const int c)
 }
 
 /* returns the amount of characters in s1 that are not in set. */
-static size_t	m_strtrim_precount(char const *s1, char const *set)
+static void	m_strtrim_precount(char const *s1, char const *set, size_t *start, size_t *end)
 {
-	size_t	count;
 	size_t	i;
+	size_t	len;
 
-	count = 0;
 	i = 0;
-	while (s1[i] != 0)
+	len = ft_strlen(s1);
+	while (i < len && m_str_contains((const char *)set, s1[i]))
 	{
-		if (!m_str_contains((const char *)set, s1[i]))
-			count++;
 		i++;
 	}
-	return (count);
+	*start = i;
+	i = len;
+	while (i > 0)
+	{
+		i--;
+		if (!m_str_contains((const char *)set, s1[i]))
+			break ;
+	}
+	if (i < *start)
+		i = *start;
+	*end = i;
 }
 
 /* creates a new string from s1 with only characters that
@@ -36,23 +44,20 @@ static size_t	m_strtrim_precount(char const *s1, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ret;
+	size_t	start;
+	size_t	end;
 	size_t	i;
-	size_t	j;
 
-	ret = malloc(m_strtrim_precount(s1, set) + 1);
+	m_strtrim_precount(s1, set, &start, &end);
+	ret = malloc((end - start + 1) + 1);
 	if (ret == NULL)
 		return (ret);
-	i = 0;
-	j = 0;
-	while (s1[i] != 0)
+	i = start;
+	while (i <= end)
 	{
-		if (!m_str_contains((const char *)set, s1[i]))
-		{
-			ret[j] = s1[i];	
-			j++;
-		}
+		ret[i - start] = s1[i];
 		i++;
 	}
-	ret[j] = 0;
+	ret[i - start] = 0;
 	return (ret);
 }
