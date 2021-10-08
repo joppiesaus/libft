@@ -2,7 +2,6 @@
 
 #include <unistd.h> /* write */
 #include <stdlib.h> /* malloc */
-#include <stdint.h> // TODO: check is allowed
 
 #define MAX_INT_STRING_LEN (12)
 
@@ -12,7 +11,7 @@
 typedef struct s_itoa_str
 {
 	char		data[MAX_INT_STRING_LEN];
-	uint32_t	length;
+	int			length;
 }				t_itoa_str;
 
 static void	m_inverse_string(char *s, int len)

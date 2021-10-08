@@ -1,5 +1,6 @@
 #include "libft.h"
 
+/* locates memory location of char c in s, returns NULL if not found. */
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != 0)
@@ -17,7 +18,8 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/* cursed implementation: size_t cannot go below zero, so will underflow.
+/* Same stuff, except the last occurence.
+ * cursed implementation: size_t cannot go below zero, so will underflow.
  * Instead of casting to a long, just add one and decrement beforehand.*/
 char	*ft_strrchr(const char *s, int c)
 {
