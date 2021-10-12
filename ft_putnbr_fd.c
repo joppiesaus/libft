@@ -7,7 +7,7 @@
 
 /* CURSED IMPLEMENTATION: I don't want to write the same code twice,
  * but I cannot use malloc for putnbr, so I came up with a struct
- * instead. */
+ * instead. Note: length does NOT include null terminator('\0'). */
 typedef struct s_itoa_str
 {
 	char		data[MAX_INT_STRING_LEN];
@@ -18,18 +18,45 @@ static void	m_inverse_string(char *s, int len)
 {
 	int		i;
 	int		j;
-	char	c;
+	char	t;
 
 	i = 0;
 	j = len - 1;
 	while (i < j)
 	{
-		c = s[i];
+		t = s[i];
 		s[i] = s[j];
-		s[j] = c;
+		s[j] = t;
 		i++;
 		j--;
 	}
+}
+
+static int	m_itoa_set_data(int n, t_itoa_str *t, int *is_negative)
+{
+	int	i;
+
+	i = 0;
+	*is_negative = 0;
+	if (n == 0)
+	{
+		t->data[i] = '0';
+		i++;
+	}
+	else if (n < 0)
+	{
+		*is_negative = 1;
+		t->data[i] = -(n % -10) + '0';
+		n /= -10;
+		i++;
+	}
+	while (n > 0)
+	{
+		t->data[i] = (n % 10) + '0';
+		n /= 10;
+		i++;
+	}
+	return (i);
 }
 
 static t_itoa_str	m_itoa(int n)
@@ -38,60 +65,41 @@ static t_itoa_str	m_itoa(int n)
 	int			i;
 	int			is_negative;
 
-	i = 0;
-	is_negative = 0;
-	if (n == 0)
-		t.data[i++] = '0';
-	else if (n < 0)
-	{
-		is_negative = 1;
-		t.data[i++] = -(n % -10) + '0';
-		n /= -10;
-	}
-	while (n > 0)
-	{
-		t.data[i++] = (n % 10) + '0';
-		n /= 10;
-	}
+	i = m_itoa_set_data(n, &t, &is_negative);
 	if (is_negative)
-		t.data[i++] = '-';
-	t.data[i++] = 0;
-	m_inverse_string((char *)&t.data, i - 1);
+	{
+		t.data[i] = '-';
+		i++;
+	}
+	t.data[i] = 0;
+	m_inverse_string((char *)&t.data, i);
 	t.length = i;
 	return (t);
 }
 
+/* converts int n to a freeable char* */
 char	*ft_itoa(int n)
 {
 	t_itoa_str	t;
 	char		*ret;
 
-	ret = malloc(MAX_INT_STRING_LEN);
+	t = m_itoa(n);
+	t.length++;
+	ret = malloc(t.length);
 	if (ret == NULL)
 		return (ret);
-	t = m_itoa(n);
 	return (ft_memcpy(ret, (char *)&t.data, t.length));
 }
 
+/* prints n to file descriptor fd.
+ * a recursive approach could've worked, however, I like this approach more
+ * as it uses one write call instead of multiple for larger numbers. */
 void	ft_putnbr_fd(int n, int fd)
 {
 	t_itoa_str	t;
 
 	t = m_itoa(n);
 	write(fd, (char *)&t.data, t.length);
-	printf("\n");
-}
-
-int main()
-{
-	ft_putnbr_fd(0, 1);
-	ft_putnbr_fd(1, 1);
-	ft_putnbr_fd(342, 1);
-	ft_putnbr_fd(-234, 1);
-	ft_putnbr_fd(-234, 1);
-	ft_putnbr_fd(0x7fffffff, 1);
-	ft_putnbr_fd(0x80000000, 1);
-	return (0);
 }
 
 #undef MAX_INT_STRING_LEN
