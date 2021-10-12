@@ -23,11 +23,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	long	len;
+	long	orig_src_len;
 	long	n;
 
 	len = (long)ft_strlen(dst);
 	n = 0;
-	while (n < (long)dstsize - len - 1 && src[n] != 0)
+	while (n < ((long)dstsize) - len - 1 && src[n] != 0)
 	{
 		dst[n + len] = src[n];
 		n++;
@@ -36,5 +37,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	{
 		dst[n + len] = 0;
 	}
+	if (len > dstsize)
+		len = (long)dstsize;
 	return (len + ft_strlen(src));
 }
