@@ -5,7 +5,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s != 0)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 		{
 			return ((char *)s);
 		}
@@ -29,7 +29,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (i > 0)
 	{
 		i--;
-		if (s[i] == c)
+		if (s[i] == (char)c)
 		{
 			return ((char *)s + i);
 		}
@@ -44,7 +44,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((const char *)s)[i] == c)
+		if (((const char *)s)[i] == (char)c)
 		{
 			return ((void *)(((const char *)s) + i));
 		}
