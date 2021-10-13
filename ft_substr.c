@@ -1,41 +1,30 @@
-#include <stdlib.h>
+#include "libft.h"
 
-/* TODO: check & smart alloc */
+#include <stdlib.h> /* for malloc() */
+
+/* this function does strlen every time. This is inefficient, but it will
+ * detect if len is too big for the string. */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	n;
-	size_t	ret_i;
+	size_t	s_len;
 	char	*ret;
 
 	n = 0;
-	ret_i = 0;
 	while (s[n] != 0 && n != start)
 		n++;
 	if (s[n] == 0)
 		len = 0;
+	else
+	{
+		s_len = ft_strlen(s) - start;
+		if (s_len < len)
+			len = s_len;
+	}
 	ret = malloc(len + 1);
 	if (ret == NULL)
 		return (ret);
-	while (s[n] != 0 && ret_i < len)
-	{
-		ret[ret_i] = s[n];
-		n++;
-		ret_i++;
-	}
-	ret[ret_i] = 0;
+	ft_memcpy(ret, s + n, len);
+	ret[len] = 0;
 	return (ret);
-}
-
-
-#include <stdio.h>
-int main()
-{
-	printf("%s\n", ft_substr("jeff", 1, 2));
-	printf("%s\n", ft_substr("jeff", 0, 5));
-	printf("%s\n", ft_substr("jefffffffffff", 9, 5));
-	printf("%s\n", ft_substr("jefffffffffff", 93, 5));
-	printf("%s\n", ft_substr("jefffffffffff", 93, 0));
-
-	
-	return (0);
 }
