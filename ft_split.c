@@ -28,7 +28,7 @@ static size_t	m_count_words(const char *s, const int c)
 }
 
 /* creates and allocs a "word", and updates the index for s. */
-char	*m_create_word(const char *s, const int c, size_t *index)
+static char	*m_create_word(const char *s, const int c, size_t *index)
 {
 	char	*ret;
 	size_t	j;
