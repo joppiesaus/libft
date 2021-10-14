@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include "libft.h"
 
 /* intead of doing the classic integer counting,
  * increment the pointer. this is slightly faster

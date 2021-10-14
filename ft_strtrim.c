@@ -15,7 +15,8 @@ static int	m_str_contains(const char *s, const int c)
 }
 
 /* returns the amount of characters in s1 that are not in set. */
-static void	m_strtrim_precount(char const *s1, char const *set, size_t *start, size_t *end)
+static void	m_strtrim_precount(char const *s1, char const *set,
+	size_t *start, size_t *end)
 {
 	size_t	i;
 	size_t	len;
