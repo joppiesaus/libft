@@ -76,8 +76,8 @@ static void	m_copy_to_array(char const *s, const int c,
 }
 
 /* makes a null-terminated array of s splitted into words delimited by c.
- * NOT-ing c(setting them all to 1s) when c is 0 is so that the comparison
- * always fails when c was actually a null terminator. */
+ * setting chr to -1 is so that the comparison always fails when 
+ * c was actually a null terminator. */
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 		return ((char **)s);
 	chr = c;
 	if (chr == 0)
-		chr = ~chr;
+		chr--;
 	str = (char *)s;
 	while (*str == chr)
 		str++;
