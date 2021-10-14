@@ -2,7 +2,7 @@
 
 #include <stdlib.h> /* for malloc() */
 
-/* counts the number of words as delimited by c.  */
+/* counts the number of words in s as delimited by c. */
 static size_t	m_count_words(const char *s, const int c)
 {
 	size_t	i;
@@ -56,6 +56,7 @@ static char	*m_create_word(const char *s, const int c, size_t *index)
 	return (ret);
 }
 
+/* allocates and copies a word, appends it the word array. */
 static void	m_copy_to_array(char const *s, const int c,
 	char **r, size_t n_words)
 {
@@ -74,8 +75,9 @@ static void	m_copy_to_array(char const *s, const int c,
 	r[current_word] = 0;
 }
 
-/* setting c to 1234 is so that the comparison always fails when c was 
- * actually a null terminator. */
+/* makes a null-terminated array of s splitted into words delimited by c.
+ * NOT-ing c(setting them all to 1s) when c is 0 is so that the comparison
+ * always fails when c was actually a null terminator. */
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
@@ -87,14 +89,14 @@ char	**ft_split(char const *s, char c)
 		return ((char **)s);
 	chr = c;
 	if (chr == 0)
-		chr = 1234;
+		chr = ~chr;
 	str = (char *)s;
-	while (*s == chr)
-		s++;
+	while (*str == chr)
+		str++;
 	n_words = m_count_words(str, chr);
 	ret = malloc((n_words + 1) * sizeof(char *));
 	if (ret == NULL)
 		return (ret);
-	m_copy_to_array(s, chr, ret, n_words);
+	m_copy_to_array(str, chr, ret, n_words);
 	return (ret);
 }
