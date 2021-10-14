@@ -1,9 +1,11 @@
 NAME := libft
 OBJ_DIR = obj
 CFLAGS := -Wall -Wextra -O
-DEPS := $(wildcard ft_*.c)
-OBJ := $(DEPS:%.c=$(OBJ_DIR)/%.o)
-HEADERS := $(NAME).h
+DEPS = $(wildcard ft_*.c)
+MANDATORY_OBJ = $(DEPS:%.c=$(OBJ_DIR)/%.o)
+HEADERS = $(NAME).h
+BONUS_DEPS = _bonus_1.c _bonus_2.c
+BONUS_OBJ = $(BONUS_DEPS:%.c=$(OBJ_DIR)/%.o)
 
 # rule:
 # target: prerequisites
@@ -12,6 +14,12 @@ HEADERS := $(NAME).h
 # $@ = target
 # $^ = all prerequisites
 # $< first prerequisite
+
+ifdef	MAKE_BONUS
+	OBJ = $(MANDATORY_OBJ) $(BONUS_OBJ)
+else
+	OBJ = $(MANDATORY_OBJ)
+endif
 
 all: $(NAME)
 
@@ -33,4 +41,7 @@ fclean: clean
 re: fclean all
 force: re
 
-.PHONY: clean fclean all re force
+bonus:
+	@$(MAKE) MAKE_BONUS=1
+
+.PHONY: clean fclean all re force $(NAME) bonus
