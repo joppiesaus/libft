@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include "libft.h"
 
 /* Instead of copying byte by byte, copy by size_t.
 This is in theory faster because you can copy more each cycle.
