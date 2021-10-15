@@ -1,10 +1,15 @@
 NAME := libft
 OBJ_DIR = obj
-CFLAGS := -Wall -Wextra -O
-DEPS = $(wildcard ft_*.c)
-MANDATORY_OBJ = $(DEPS:%.c=$(OBJ_DIR)/%.o)
+CFLAGS := -Wall -Wextra -Werror -O
+#MANDATORY_DEPS = $(wildcard ft_*.c)
+MANDATORY_DEPS = ft_atoi.c ft_itoa.c ft_memset.c ft_strdup.c ft_strlen.c \
+	ft_strtrim.c ft_bzero.c ft_memcmp.c ft_put_fd.c ft_strjoin.c \
+	ft_strmapi.c ft_substr.c ft_calloc.c ft_memcpy.c ft_split.c \
+	ft_strlcat.c ft_strncmp.c ft_to_x.c ft_is_x.c ft_memmove.c \
+	ft_strchr.c ft_strlcpy.c ft_strnstr.c
+MANDATORY_OBJ = $(MANDATORY_DEPS:%.c=$(OBJ_DIR)/%.o)
 HEADERS = $(NAME).h
-BONUS_DEPS = _bonus_1.c _bonus_2.c
+BONUS_DEPS = ft_list_part1_bonus.c ft_list_part2_bonus.c
 BONUS_OBJ = $(BONUS_DEPS:%.c=$(OBJ_DIR)/%.o)
 
 # rule:
