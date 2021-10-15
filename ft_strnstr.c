@@ -1,5 +1,7 @@
 #include "libft.h"
 
+/* tries to find string needle in string haystack, with max len chars searched.
+ * returns NULL on failure, the location on success. */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;

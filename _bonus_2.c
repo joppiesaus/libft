@@ -1,6 +1,6 @@
 #include "libft.h"
 
-#include <stdlib.h> /* malloc, free */
+#include <stdlib.h> /* free */
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
@@ -39,7 +39,7 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		}
 		else
 		{
-			//del(ft_lstnew(temp_content));	
+			del(ft_lstnew(temp_content));
 		}
 		lst = lst->next;
 	}

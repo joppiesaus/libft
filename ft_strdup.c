@@ -1,7 +1,8 @@
 #include "libft.h"
 
-#include <stdlib.h>
+#include <stdlib.h> /* malloc */
 
+/* duplicates s1 and returns it. Returns NULL on malloc failure. */
 char	*ft_strdup(const char *s1)
 {
 	char	*s2;

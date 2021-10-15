@@ -41,6 +41,8 @@ fclean: clean
 re: fclean all
 force: re
 
+# I would really like to know how to do this without recursive make
+# this would be a topic for the future.
 bonus:
 	@$(MAKE) MAKE_BONUS=1
 
