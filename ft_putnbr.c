@@ -77,18 +77,15 @@ static t_itoa_str	m_itoa(int n)
 	return (t);
 }
 
-/* converts int n to a freeable char* */
-char	*ft_itoa(int n)
+/* prints n to file descriptor fd.
+ * a recursive approach could've worked, however, I like this approach more
+ * as it uses one write call instead of multiple for larger numbers. */
+void	ft_putnbr_fd(int n, int fd)
 {
 	t_itoa_str	t;
-	char		*ret;
 
 	t = m_itoa(n);
-	t.length++;
-	ret = malloc(t.length);
-	if (ret == NULL)
-		return (ret);
-	return (ft_memcpy(ret, (char *)&t.data, t.length));
+	write(fd, (char *)&t.data, t.length);
 }
 
 #undef MAX_INT_STRING_LEN
