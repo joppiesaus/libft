@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-/* TODO: double pass? */
+/* TODO: double pass for more efficient mem alloc? */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*dst;
@@ -27,16 +27,4 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	}
 	dst[di] = 0;
 	return (dst);
-}
-
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] != 0)
-	{
-		f(i, (s + i));
-		i++;
-	}
 }

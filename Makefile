@@ -1,8 +1,8 @@
 NAME := libft
 OBJ_DIR = obj
 CFLAGS := -Wall -Wextra -Werror -O
-#MANDATORY_DEPS = $(wildcard ft_*.c)
-MANDATORY_DEPS = ft_atoi.c ft_itoa.c ft_memset.c ft_strdup.c ft_strlen.c \
+MANDATORY_DEPS = $(wildcard ft_*.c)
+#MANDATORY_DEPS = ft_atoi.c ft_itoa.c ft_memset.c ft_strdup.c ft_strlen.c \
 	ft_strtrim.c ft_bzero.c ft_memcmp.c ft_put_fd.c ft_strjoin.c \
 	ft_strmapi.c ft_substr.c ft_calloc.c ft_memcpy.c ft_split.c \
 	ft_strlcat.c ft_strncmp.c ft_to_x.c ft_is_x.c ft_memmove.c \
