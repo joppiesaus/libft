@@ -1,6 +1,22 @@
 #include "libft.h"
 
-#include <stdlib.h> /* for malloc() */
+#include <stdlib.h> /* malloc, free */
+
+static void	free_words(char ***wds)
+{
+	char	**w;
+	size_t	i;
+
+	i = 0;
+	w = *wds;
+	while (w[i] != 0)
+	{
+		free(w[i]);
+		i++;
+	}
+	free(w);
+	*wds = NULL;
+}
 
 /* counts the number of words in s as delimited by c. */
 static size_t	m_count_words(const char *s, const int c)
@@ -56,8 +72,9 @@ static char	*m_create_word(const char *s, const int c, size_t *index)
 	return (ret);
 }
 
-/* allocates and copies a word, appends it the word array. */
-static void	m_copy_to_array(char const *s, const int c,
+/* allocates and copies a word, appends it the word array.
+ * Returns 1 on success, 0 on fail. */
+static int	m_copy_to_array(char const *s, const int c,
 	char **r, size_t n_words)
 {
 	size_t	i;
@@ -68,11 +85,14 @@ static void	m_copy_to_array(char const *s, const int c,
 	while (s[i] != 0 && current_word < n_words)
 	{
 		r[current_word] = m_create_word(s, c, &i);
+		if (r[current_word] == NULL)
+			return (0);
 		current_word++;
 		while (s[i] == c && s[i] != 0)
 			i++;
 	}
 	r[current_word] = 0;
+	return (1);
 }
 
 /* makes a null-terminated array of s splitted into words delimited by c.
@@ -97,6 +117,9 @@ char	**ft_split(char const *s, char c)
 	ret = malloc((n_words + 1) * sizeof(char *));
 	if (ret == NULL)
 		return (ret);
-	m_copy_to_array(str, chr, ret, n_words);
+	if (!m_copy_to_array(str, chr, ret, n_words))
+	{
+		free_words(&ret);
+	}
 	return (ret);
 }
