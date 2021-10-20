@@ -1,6 +1,5 @@
 #include "libft.h"
 
-#include <unistd.h> /* write */
 #include <stdlib.h> /* malloc */
 
 #define MAX_INT_STRING_LEN (12)
