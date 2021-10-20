@@ -10,6 +10,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 	char	*ret;
 
+	if (s == NULL)
+		return ((char *)s);
 	n = 0;
 	while (s[n] != 0 && n != start)
 		n++;

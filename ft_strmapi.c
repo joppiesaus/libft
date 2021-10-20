@@ -10,6 +10,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	si;
 	unsigned int	di;
 
+	if (s == NULL || f == NULL)
+		return (NULL);
 	dst = malloc(ft_strlen(s) + 1);
 	if (dst == NULL)
 		return (dst);
