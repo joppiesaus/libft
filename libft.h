@@ -12,8 +12,13 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 
-int		ft_toupper(int c);
-int		ft_tolower(int c);
+int		ft_cisupper(const int c);
+int		ft_cislower(const int c);
+int		ft_ctoupper(int c);
+int		ft_ctolower(int c);
+
+char	*ft_strtoupper(char *s);
+char	*ft_strtolower(char *s);
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
