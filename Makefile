@@ -9,7 +9,8 @@ MANDATORY_DEPS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c \
 	ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c \
 	ft_substr.c ft_ctolower.c ft_ctoupper.c ft_str_contains_char.c \
-	ft_itoa_hex.c ft_strtoupper.c ft_strtolower.c ft_cisupper.c ft_cislower.c
+	ft_itoa_hex.c ft_strtoupper.c ft_strtolower.c ft_cisupper.c \
+	ft_cislower.c ft_uitoa.c
 MANDATORY_OBJ = $(MANDATORY_DEPS:%.c=$(OBJ_DIR)/%.o)
 HEADERS = $(NAME).h
 BONUS_DEPS = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \

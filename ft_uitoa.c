@@ -4,8 +4,6 @@
 
 #define MAX_INT_STRING_LEN (12)
 
-/* TODO: REWRITE ALL OF THIS */
-
 /* CURSED IMPLEMENTATION: I don't want to write the same code twice,
  * but I cannot use malloc for putnbr, so I came up with a struct
  * instead. Note: length does NOT include null terminator('\0'). */
@@ -33,22 +31,14 @@ static void	m_inverse_string(char *s, int len)
 	}
 }
 
-static int	m_itoa_set_data(int n, t_itoa_str *t, int *is_negative)
+static int	m_uitoa_set_data(unsigned int n, t_itoa_str *t)
 {
 	int	i;
 
 	i = 0;
-	*is_negative = 0;
 	if (n == 0)
 	{
 		t->data[i] = '0';
-		i++;
-	}
-	else if (n < 0)
-	{
-		*is_negative = 1;
-		t->data[i] = -(n % -10) + '0';
-		n /= -10;
 		i++;
 	}
 	while (n > 0)
@@ -60,31 +50,25 @@ static int	m_itoa_set_data(int n, t_itoa_str *t, int *is_negative)
 	return (i);
 }
 
-static t_itoa_str	m_itoa(int n)
+static t_itoa_str	m_uitoa(unsigned int n)
 {
-	t_itoa_str	t;
-	int			i;
-	int			is_negative;
+	t_itoa_str		t;
+	unsigned int	i;
 
-	i = m_itoa_set_data(n, &t, &is_negative);
-	if (is_negative)
-	{
-		t.data[i] = '-';
-		i++;
-	}
+	i = m_uitoa_set_data(n, &t);
 	t.data[i] = 0;
 	m_inverse_string((char *)&t.data, i);
 	t.length = i;
 	return (t);
 }
 
-/* converts int n to a freeable char* */
-char	*ft_itoa(int n)
+/* converts uint n to a freeable char* */
+char	*ft_uitoa(unsigned int n)
 {
 	t_itoa_str	t;
 	char		*ret;
 
-	t = m_itoa(n);
+	t = m_uitoa(n);
 	t.length++;
 	ret = malloc(t.length);
 	if (ret == NULL)
