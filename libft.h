@@ -47,6 +47,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
+char	*ft_itoa_hex_size_t(size_t nbr);
 
 /* Bonus part */
 typedef struct s_list
