@@ -55,6 +55,8 @@ char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 char	*ft_itoa_hex_size_t(size_t nbr);
 
+void	ft_free_str_arr(char **arr);
+
 /* Bonus part */
 typedef struct s_list
 {
