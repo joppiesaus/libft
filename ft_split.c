@@ -1,22 +1,6 @@
 #include "libft.h"
 
-#include <stdlib.h> /* malloc, free */
-
-static void	free_words(char ***wds)
-{
-	char	**w;
-	size_t	i;
-
-	i = 0;
-	w = *wds;
-	while (w[i] != 0)
-	{
-		free(w[i]);
-		i++;
-	}
-	free(w);
-	*wds = NULL;
-}
+#include <stdlib.h> /* malloc */
 
 /* counts the number of words in s as delimited by c. */
 static size_t	m_count_words(const char *s, const int c)
@@ -119,7 +103,8 @@ char	**ft_split(char const *s, char c)
 		return (ret);
 	if (!m_copy_to_array(str, chr, ret, n_words))
 	{
-		free_words(&ret);
+		ft_free_str_arr(ret);
+		ret = NULL;
 	}
 	return (ret);
 }
