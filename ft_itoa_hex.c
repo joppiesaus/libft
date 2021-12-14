@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_itoa_hex.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/14 12:53:03 by jobvan-d      #+#    #+#                 */
+/*   Updated: 2021/12/14 12:55:44 by jobvan-d      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 #include <stdlib.h>
@@ -7,10 +19,10 @@
  * result of shifting itself removes the other nibble. */
 static void	m_itoa_hex_byte(char *s, const unsigned char b)
 {
-	const char	*HEX = "0123456789abcdef";
+	const char	*hex = "0123456789abcdef";
 
-	s[0] = HEX[b >> 4];
-	s[1] = HEX[b & 0x0f];
+	s[0] = hex[b >> 4];
+	s[1] = hex[b & 0x0f];
 }
 
 static char	*m_create_str(const char *s, const size_t len)

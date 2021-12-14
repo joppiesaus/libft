@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strlcat.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/14 12:53:56 by jobvan-d      #+#    #+#                 */
+/*   Updated: 2021/12/14 12:53:57 by jobvan-d      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* strlcpy straight up stolen from myself, but this one doesn't

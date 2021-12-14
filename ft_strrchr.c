@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strrchr.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/14 12:54:14 by jobvan-d      #+#    #+#                 */
+/*   Updated: 2021/12/14 12:54:15 by jobvan-d      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /* Locates last memory location of char c in s, returns NULL if not found.
