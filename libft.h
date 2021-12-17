@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/14 12:54:29 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2021/12/14 12:54:30 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2021/12/17 18:16:42 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
+char	*ft_strndup_unsafe(const char *s1, const size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 int		ft_str_contains_char(const char *s, const int c);
