@@ -51,7 +51,7 @@ all: $(NAME)
 $(NAME): $(NAME).a
 
 $(NAME).a: $(OBJ)
-	ar -ru $@ $^
+	ar rcs $@ $^
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS)
 	@mkdir -p $(dir $@)
