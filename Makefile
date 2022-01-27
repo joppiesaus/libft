@@ -6,7 +6,7 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/14 12:53:47 by jobvan-d      #+#    #+#                  #
-#    Updated: 2021/12/17 18:17:17 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/01/27 17:10:59 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,9 +53,11 @@ $(NAME): $(NAME).a
 $(NAME).a: $(OBJ)
 	ar rcs $@ $^
 
-$(OBJ_DIR)/%.o: %.c $(HEADERS)
-	@mkdir -p $(dir $@)
+$(OBJ_DIR)/%.o: %.c $(HEADERS) | $(OBJ_DIR)
 	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(OBJ_DIR):
+	mkdir $@
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
