@@ -6,7 +6,7 @@
 #    By: jobvan-d <jobvan-d@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/14 12:53:47 by jobvan-d      #+#    #+#                  #
-#    Updated: 2022/01/27 17:10:59 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/02/03 15:57:54 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MANDATORY_DEPS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_substr.c ft_ctolower.c ft_ctoupper.c ft_str_contains_char.c \
 	ft_itoa_hex.c ft_strtoupper.c ft_strtolower.c ft_cisupper.c \
 	ft_cislower.c ft_uitoa.c ft_free_str_arr.c ft_strcmp.c \
-	ft_strndup_unsafe.c
+	ft_strndup_unsafe.c ft_isspace.c
 
 MANDATORY_OBJ = $(MANDATORY_DEPS:%.c=$(OBJ_DIR)/%.o)
 HEADERS = $(NAME).h

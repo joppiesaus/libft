@@ -6,23 +6,11 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/14 12:52:04 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2021/12/14 12:52:05 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/03 15:49:53 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/* checks if c is a whitespace character.
- * `switch' would have been perfect here xD */
-static int	m_isspace(int c)
-{
-	return (c == ' '
-		|| c == '\n'
-		|| c == '\t'
-		|| c == '\v'
-		|| c == '\f'
-		|| c == '\r');
-}
 
 /* gets the offset of where there is no longer whitespace in string s */
 static unsigned int	m_get_space_offset(const char *s)
@@ -30,7 +18,7 @@ static unsigned int	m_get_space_offset(const char *s)
 	unsigned int	n;
 
 	n = 0;
-	while (m_isspace(s[n]))
+	while (ft_isspace(s[n]))
 	{
 		n++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/14 12:54:29 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2021/12/17 18:16:42 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/02/03 16:00:00 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
+int		ft_isspace(const int c);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
